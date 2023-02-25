@@ -19,7 +19,7 @@
 </script>
 
 <Container maxSize="md">
-  <form method="POST" action="?/register">
+  <form method="POST">
     <div class="mb-3">
       <Input
         bind:value={email}

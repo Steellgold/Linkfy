@@ -18,35 +18,13 @@
 </script>
 
 <Container maxSize="md">
-  <form action="?/login" method="POST">
+  <form method="POST">
     <div class="mb-3">
-      <Input
-        bind:value={email}
-        props={{
-          type: "email",
-          label: "Email address",
-          placeholder: "johndoe@example.com",
-          width: "full",
-          size: "small",
-          name: "email",
-          required: true
-        }}
-      />
+      <Input bind:value={email} props={{ type: "email", label: "Email address", placeholder: "johndoe@example.com", width: "full", size: "small", name: "email", required: true }} />
     </div>
 
     <div class="mb-0">
-      <Input
-        bind:value={password}
-        props={{
-          type: "password",
-          label: "Password",
-          placeholder: "••••••••",
-          width: "full",
-          size: "small",
-          name: "password",
-          required: true
-        }}
-      />
+      <Input bind:value={password} props={{ type: "password", label: "Password", placeholder: "••••••••", width: "full", size: "small", name: "password", required: true }} />
     </div>
 
     <div class="mt-5">
@@ -55,10 +33,7 @@
 
     <div class="mt-4">
       <p class="font-sm text-sm text-gray-400">
-        Don't have an account? <a
-          href="/sign-up"
-          class="2s transition-all ease-in-out hover:text-gray-300">Sign up</a
-        >
+        Don't have an account? <a href="/sign-up" class="2s transition-all ease-in-out hover:text-gray-300">Sign up</a>
       </p>
     </div>
   </form>

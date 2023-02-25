@@ -2,6 +2,7 @@
   "extends": "@bluzzi",
 
   "rules": {
-    "camelcase": "off"
+    "camelcase": "off",
+    "no-undef": "off"
   }
 }

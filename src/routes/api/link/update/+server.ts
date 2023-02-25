@@ -1,4 +1,4 @@
-import prisma from "$lib/database/Prisma";
+import prisma from "$lib/database/prisma";
 import { rateLimit } from "$lib/RateLimit";
 import z from "zod";
 import type { RequestEvent } from "./$types";

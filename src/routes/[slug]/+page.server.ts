@@ -1,32 +1,26 @@
-import { PUBLIC_URL } from "$env/static/public";
+import { PUBLIC_URL, PUBLIC_API_URL } from "$env/static/public";
+import type { Link } from "$lib/types/link.type";
+import { restRequest } from "$lib/utils/request/request";
 import { error, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
-export const load = (async({ params, fetch }) => {
+// eslint-disable-next-line
+export const load = (async({ params }) => {
   if (!params.slug) throw redirect(303, PUBLIC_URL);
+  const data = await restRequest<Link>("get", PUBLIC_API_URL + "link/get/" + params.slug + "/url,status,password");
 
-  const data = await fetch(PUBLIC_URL + "api/link?slug=" + params.slug);
-  if (!data.ok) throw error(404, { message: "This link not exist or has been disabled", code: 404 });
+  if (!data.success || !data.data.status) {
+    throw error(404, { message: "This link not exist or has been disabled", code: 404 });
+  }
 
-  const dataJson = await data.json();
+  if (data.data.password !== "none") {
+    throw redirect(303, PUBLIC_URL + params.slug + "/protected");
+  }
 
-  if (data.status !== 200) throw redirect(303, PUBLIC_URL);
-
-  await fetch(PUBLIC_URL + "api/link/update", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      slug: params.slug,
-      data: {
-        clicks: dataJson.clicks + 1
-      }
-    })
-  });
+  await restRequest("put", PUBLIC_API_URL + "link/increment/" + params.slug);
 
   return {
-    url: dataJson.url,
-    status: dataJson.status
+    status: data.data.status,
+    url: data.data.url
   };
 }) satisfies PageServerLoad;

@@ -8,31 +8,24 @@
     "preview": "vite preview --host",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint:fix": "eslint . --fix",
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
-    "lint": "eslint . & prettier --plugin-search-dir . --check .",
-    "format": "prettier --plugin-search-dir . --write ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@bluzzi/eslint-config": "^0.8.3",
-    "@histoire/plugin-svelte": "^0.12.4",
-    "@prisma/client": "^4.10.0",
+    "@prisma/client": "^4.10.1",
     "@sveltejs/adapter-auto": "^1.0.2",
     "@sveltejs/kit": "^1.1.4",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "^18.11.18",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.32.0",
-    "histoire": "^0.12.4",
     "postcss": "^8.4.21",
     "postcss-load-config": "^4.0.1",
-    "prettier": "^2.8.3",
-    "prettier-plugin-organize-imports": "^3.2.2",
-    "prettier-plugin-svelte": "^2.8.1",
-    "prettier-plugin-tailwindcss": "^0.2.2",
-    "prisma": "^4.10.0",
+    "prisma": "^4.10.1",
     "svelte": "^3.55.1",
     "svelte-check": "^3.0.2",
     "svelte-preprocess": "^4.10.7",
@@ -44,11 +37,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro": "^3.8.1",
     "@supabase/auth-helpers-sveltekit": "^0.8.7",
     "@supabase/supabase-js": "^2.4.0",
     "dayjs": "^1.11.7",
-    "js-cookie": "^3.0.1",
     "zod": "^3.20.2"
   }
 }

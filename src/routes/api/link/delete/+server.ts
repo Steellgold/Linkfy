@@ -1,4 +1,4 @@
-import prisma from "$lib/database/Prisma";
+import prisma from "$lib/database/prisma";
 import { rateLimit } from "$lib/RateLimit";
 import z from "zod";
 import type { RequestEvent } from "./$types";
@@ -27,5 +27,7 @@ export async function DELETE({ request, getClientAddress }: RequestEvent): Promi
     }
   });
 
-  return new Response("OK", { status: 200 });
+  return new Response(JSON.stringify({
+    success: true
+  }), { status: 200 });
 }
